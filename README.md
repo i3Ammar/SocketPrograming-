@@ -1,9 +1,9 @@
 Run the server 
-```py
+```bash
 py .\server.py 8080 .\dictionary.json
 ```
 
 Run Clients
-```
+```bash
 py .\client.py 
 ```
