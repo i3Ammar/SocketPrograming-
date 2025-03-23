@@ -5,5 +5,5 @@ py .\server.py 8080 .\dictionary.json
 
 Run Clients
 ```bash
-py .\client.py 
+ py .\client.py localhost 8080
 ```
