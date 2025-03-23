@@ -1,3 +1,4 @@
+import argparse
 import socket
 import json
 import tkinter as tk
@@ -29,7 +30,7 @@ class Client:
                 s.connect((self.host, self.port))
                 s.send(json.dumps({'word': word}).encode())
                 response = json.loads(s.recv(1024).decode())
-
+                print(response)
                 if 'meaning' in response:
                     return response['meaning']
                 elif 'error' in response:
@@ -61,5 +62,9 @@ class Client:
         self.root.mainloop()
 
 if __name__ == "__main__":
-    client = Client('localhost', 8080)
+    parser = argparse.ArgumentParser(description = "Client")
+    parser.add_argument('host', help = 'Server host address')
+    parser.add_argument('port', type = int , help = "Port Number")
+    args = parser.parse_args()
+    client = Client(args.host,args.port)
     client.run()
